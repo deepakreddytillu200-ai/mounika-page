@@ -3,93 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Mounika ❤️</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ff69b4, #ffb6c1, #ff1493);
-  overflow: hidden;
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ff69b4,#ffb6c1,#ff1493);
+  overflow:hidden;
 }
 
-.card {
-  width: 90%;
-  max-width: 650px;
-  padding: 45px 25px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  border-radius: 30px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+.card{
+  width:90%;
+  max-width:650px;
+  padding:45px 25px;
+  text-align:center;
+  background:rgba(255,255,255,.25);
+  border-radius:30px;
+  box-shadow:0 20px 50px rgba(0,0,0,.15);
+  backdrop-filter:blur(12px);
+  color:white;
 }
 
-h1 {
-  font-size: 55px;
-  margin: 15px;
-  color: #fff;
+h1{
+  font-size:60px;
+  margin:10px 0;
 }
 
-h2 {
-  color: white;
-  font-size: 25px;
+h2{
+  font-size:28px;
+  margin:15px 0;
 }
 
-.message {
-  color: white;
-  font-size: 20px;
-  line-height: 1.6;
-  margin: 20px;
+p{
+  font-size:20px;
+  line-height:1.6;
 }
 
-.photo {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  margin: 20px auto;
+.photo{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:50%;
+  border:5px solid white;
+  margin:20px;
 }
 
-button {
-  padding: 15px 30px;
-  border: none;
-  border-radius: 30px;
-  background: white;
-  color: #ff1493;
-  font-size: 18px;
-  cursor: pointer;
-  font-weight: bold;
+button{
+  padding:15px 30px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff1493;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-button:hover {
-  transform: scale(1.08);
+.heart{
+  position:fixed;
+  font-size:30px;
+  animation:float 5s linear forwards;
+  pointer-events:none;
 }
 
-.heart {
-  position: fixed;
-  font-size: 30px;
-  animation: fall 5s linear infinite;
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(-100px);
-    opacity: 1;
+@keyframes float{
+  0%{
+    transform:translateY(100vh) scale(.5);
+    opacity:1;
   }
-  100% {
-    transform: translateY(110vh);
-    opacity: 0;
+  100%{
+    transform:translateY(-10vh) scale(1.3);
+    opacity:0;
   }
 }
 </style>
@@ -98,48 +91,47 @@ button:hover {
 <body>
 
 <div class="card">
-
   <div style="font-size:70px;">❤️</div>
 
   <h1>Mounika</h1>
 
   <h2>Welcome to your special page ✨</h2>
 
-  <!-- MOUNIKA PHOTO -->
   <img
-    src="./WhatsApp Image 2026-08-26 at 3.00.42 AM.jpg"
-    alt="Mounika"
     class="photo"
-  >
+    src="WhatsApp Image 2026-08-26 at 3.00.42 AM.jpeg"
+    alt="Mounika">
 
-  <div class="message">
+  <p>
     Some people make life beautiful just by being there. ❤️
     <br>
     This little page is made specially for you. 🌸
-  </div>
+  </p>
 
-  <button onclick="showMessage()">
-    Click Me 💕
-  </button>
+  <button onclick="showMessage()">Click Me 💕</button>
 </div>
+
+<script>
+function showMessage(){
+  alert("You are special ❤️");
 }
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
 
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(3+Math.random()*3)+"s";
 
   document.body.appendChild(heart);
 
-  setTimeout(() => {
+  setTimeout(()=>{
     heart.remove();
-  }, 7000);
+  },6000);
 }
 
-setInterval(createHeart, 500);
+setInterval(createHeart,500);
 </script>
 
 </body>
