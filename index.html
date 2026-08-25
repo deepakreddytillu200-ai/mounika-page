@@ -2,55 +2,149 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Mounika ❤️</title>
+
 <style>
-*{box-sizing:border-box}
-body{
-margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;
-font-family:Arial,sans-serif;text-align:center;color:white;overflow:hidden;
-background:linear-gradient(135deg,#ff4f81,#ff7eb3,#a18cd1)
+* {
+  box-sizing: border-box;
 }
-.card{
-width:90%;max-width:650px;padding:45px 25px;border-radius:30px;
-background:rgba(255,255,255,.2);backdrop-filter:blur(12px);
-box-shadow:0 20px 50px rgba(0,0,0,.25)
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff69b4, #ffb6c1, #ff1493);
+  overflow: hidden;
 }
-.heart{font-size:75px;animation:beat 1s infinite}
-h1{font-size:45px;margin:15px}
-p{font-size:20px;line-height:1.6}
-.message{padding:20px;border-radius:20px;background:rgba(255,255,255,.15)}
-button{padding:14px 28px;border:0;border-radius:30px;font-size:18px;color:#ff4f81}
-.falling{position:fixed;top:-30px;font-size:25px;animation:fall 6s linear infinite}
-@keyframes beat{50%{transform:scale(1.2)}}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+
+.card {
+  width: 90%;
+  max-width: 650px;
+  padding: 45px 25px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+h1 {
+  font-size: 55px;
+  margin: 15px;
+  color: #fff;
+}
+
+h2 {
+  color: white;
+  font-size: 25px;
+}
+
+.message {
+  color: white;
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 20px;
+}
+
+.photo {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  margin: 20px auto;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff1493;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+.heart {
+  position: fixed;
+  font-size: 30px;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <div class="card">
-<div class="heart">❤️</div>
-<h1>Mounika</h1>
-<p>Welcome to your special page ✨</p>
 
-<div class="message">
-<p>Some people make life beautiful just by being there. ❤️</p>
-<p>This little page is made especially for you. 🌸</p>
-</div>
+  <div style="font-size:70px;">❤️</div>
 
-<button onclick="alert('You are special ❤️')">Click Me 💕</button>
+  <h1>Mounika</h1>
+
+  <h2>Welcome to your special page ✨</h2>
+
+  <!-- MOUNIKA PHOTO -->
+  <img
+    src="./WhatsApp Image 2026-08-26 at 3.00.42 AM.jpg"
+    alt="Mounika"
+    class="photo"
+  >
+
+  <div class="message">
+    Some people make life beautiful just by being there. ❤️
+    <br>
+    This little page is made specially for you. 🌸
+  </div>
+
+  <button onclick="showMessage()">
+    Click Me 💕
+  </button>
+
 </div>
 
 <script>
-for(let i=0;i<25;i++){
-let h=document.createElement("div");
-h.className="falling";
-h.innerHTML="❤️";
-h.style.left=Math.random()*100+"%";
-h.style.animationDelay=Math.random()*6+"s";
-h.style.fontSize=(15+Math.random()*25)+"px";
-document.body.appendChild(h);
+function showMessage() {
+  alert("You are special ❤️");
 }
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 7000);
+}
+
+setInterval(createHeart, 500);
 </script>
 
 </body>
