@@ -41,9 +41,7 @@ h1{
   margin:10px;
 }
 
-h2{
-  font-size:25px;
-}
+h2{font-size:25px}
 
 p{
   font-size:19px;
@@ -56,17 +54,17 @@ p{
   object-fit:cover;
   border-radius:50%;
   border:5px solid white;
-  box-shadow:0 8px 30px rgba(0,0,0,.25);
   margin:15px;
 }
 
 button{
-  padding:16px 32px;
+  padding:14px 25px;
+  margin:7px;
   border:0;
   border-radius:35px;
   background:white;
   color:#e83e7d;
-  font-size:20px;
+  font-size:19px;
   font-weight:bold;
   cursor:pointer;
 }
@@ -90,31 +88,22 @@ button{
   background:linear-gradient(135deg,#ff6fa5,#ffb6d5);
   border-radius:30px;
   box-shadow:0 20px 70px rgba(0,0,0,.4);
-  animation:pop .5s ease;
 }
 
 .popup-box img{
-  width:190px;
-  height:190px;
+  width:180px;
+  height:180px;
   object-fit:cover;
   border-radius:50%;
   border:6px solid white;
-}
-
-.popup-box h2{
-  font-size:32px;
-}
-
-.close{
-  margin-top:10px;
 }
 
 .heart{
   position:fixed;
   bottom:-50px;
   font-size:30px;
-  pointer-events:none;
   animation:float 4s linear forwards;
+  pointer-events:none;
   z-index:20;
 }
 
@@ -122,20 +111,9 @@ button{
   50%{transform:scale(1.2)}
 }
 
-@keyframes pop{
-  from{transform:scale(.5);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-
 @keyframes float{
-  0%{
-    transform:translateY(0) rotate(0);
-    opacity:1;
-  }
-  100%{
-    transform:translateY(-110vh) rotate(360deg);
-    opacity:0;
-  }
+  0%{transform:translateY(0) rotate(0);opacity:1}
+  100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
 }
 </style>
 </head>
@@ -161,13 +139,13 @@ button{
     This little page is made especially for you. 🌸
   </p>
 
-  <button onclick="openSurprise()">
+  <button onclick="openQuestion()">
     Click Me 💕
   </button>
 
 </div>
 
-<div class="popup" id="popup">
+<div class="popup" id="question">
 
   <div class="popup-box">
 
@@ -178,16 +156,26 @@ button{
     <h2>Mounika ❤️</h2>
 
     <p>
-      You are special to me. 💗
-      <br>
-      Keep smiling always. 🌸
-      <br>
-      You deserve all the happiness in the world. 🥹❤️
+      Mounika, natho matladachaa? 🥹❤️
     </p>
 
-    <button class="close" onclick="closeSurprise()">
-      Close ❤️
-    </button>
+    <button onclick="yesAnswer()">YES ❤️</button>
+
+    <button onclick="noAnswer()">NO 😔</button>
+
+  </div>
+
+</div>
+
+<div class="popup" id="answer">
+
+  <div class="popup-box">
+
+    <div style="font-size:60px;">❤️🥹</div>
+
+    <h2 id="answerText"></h2>
+
+    <button onclick="closePopup()">Close ❤️</button>
 
   </div>
 
@@ -195,44 +183,57 @@ button{
 
 <script>
 
-function openSurprise(){
+function openQuestion(){
+  document.getElementById("question").style.display="flex";
+  hearts();
+}
 
-  document.getElementById("popup").style.display="flex";
+function yesAnswer(){
+  document.getElementById("question").style.display="none";
+  document.getElementById("answer").style.display="flex";
+  document.getElementById("answerText").innerHTML="Thank you ❤️🥹";
+  hearts();
+}
 
-  for(let i=0;i<50;i++){
-    createHeart();
+function noAnswer(){
+  document.getElementById("question").style.display="none";
+  document.getElementById("answer").style.display="flex";
+  document.getElementById("answerText").innerHTML=
+    "Thank you YES press chesinanduku ❤️🥹";
+  hearts();
+}
+
+function closePopup(){
+  document.getElementById("answer").style.display="none";
+}
+
+function hearts(){
+
+  for(let i=0;i<35;i++){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    const emojis=["❤️","💕","💗","💖","💘"];
+
+    heart.innerHTML=
+      emojis[Math.floor(Math.random()*emojis.length)];
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=
+      (20+Math.random()*35)+"px";
+
+    heart.style.animationDuration=
+      (3+Math.random()*3)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+      heart.remove();
+    },6000);
   }
-}
-
-function closeSurprise(){
-
-  document.getElementById("popup").style.display="none";
-}
-
-function createHeart(){
-
-  const heart=document.createElement("div");
-
-  heart.className="heart";
-
-  const hearts=["❤️","💕","💗","💖","💘"];
-
-  heart.innerHTML=
-    hearts[Math.floor(Math.random()*hearts.length)];
-
-  heart.style.left=Math.random()*100+"vw";
-
-  heart.style.fontSize=
-    (20+Math.random()*35)+"px";
-
-  heart.style.animationDuration=
-    (3+Math.random()*3)+"s";
-
-  document.body.appendChild(heart);
-
-  setTimeout(function(){
-    heart.remove();
-  },6000);
 }
 
 </script>
